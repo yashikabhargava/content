@@ -10,13 +10,14 @@ tags:
 
 {{FirefoxSidebar}}
 
-This article provides information about the changes in Firefox 108 that will affect developers. Firefox 108 is the current [Nightly version of Firefox](https://www.mozilla.org/en-US/firefox/channel/desktop/#nightly) and will ship on [December 13, 2022](https://wiki.mozilla.org/RapidRelease/Calendar#Future_branch_dates).
+This article provides information about the changes in Firefox 108 that will affect developers. Firefox 108 is the current [Beta version of Firefox](https://www.mozilla.org/en-US/firefox/channel/desktop/#beta) and will ship on [December 13, 2022](https://wiki.mozilla.org/RapidRelease/Calendar#Future_branch_dates).
 
 ## Changes for web developers
 
-### Developer Tools
-
 ### HTML
+
+- The {{HTMLElement("source")}} element supports [`height`](/en-US/docs/Web/HTML/Element/source#attr-height) & [`width`](/en-US/docs/Web/HTML/Element/source#attr-width) attributes when it is a child of a {{HTMLElement("picture")}} element.
+  This functionality can be configured via the `dom.picture_source_dimension_attributes.enabled` preference which is now set to `true` by default ({{bug(1795953)}}).
 
 #### Removals
 
@@ -34,6 +35,11 @@ This article provides information about the changes in Firefox 108 that will aff
 
 ### HTTP
 
+- [`Content-Security-Policy`](/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) HTTP header directives [`style-src-elem`](/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src-elem) and [`style-src-attr`](/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src-attr) are now supported.
+  A server can use these to specify valid sources for stylesheet `<style>` elements and `<link>` elements with `rel="stylesheet"`, and for styles applied to individual elements, respectively ({{bug(1529338)}}).
+- [`Content-Security-Policy`](/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) HTTP header directives [`script-src-elem`](/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src-elem) and [`script-src-attr`](/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src-attr) are now supported.
+  A server can use these to specify valid sources for JavaScript `<script>` elements, and for inline script event handlers like `onclick`, respectively ({{bug(1529337)}}).
+
 #### Removals
 
 ### Security
@@ -46,10 +52,8 @@ This article provides information about the changes in Firefox 108 that will aff
 
 #### Media, WebRTC, and Web Audio
 
-- The [Web MIDI API](/en-US/docs/Web/API/Web_MIDI_API) is now available in [secure contexts](/en-US/docs/Web/Security/Secure_Contexts), provided user permission has been granted.
-  Users are prompted for permission to _Access MIDI devices with SysEx support_ when they first call [Navigator.requestMIDIAccess()](/en-US/docs/Web/API/Navigator/requestMIDIAccess).
-  If granted, this installs a dynamically generated site-permission add-on.
-  Permission can later be revoked by clicking on the permission icon on the page, or by [uninstalling the add-on](https://support.mozilla.org/en-US/kb/disable-or-remove-add-ons).
+- The [Web MIDI API](/en-US/docs/Web/API/Web_MIDI_API) is now available in [secure contexts](/en-US/docs/Web/Security/Secure_Contexts).
+  Users must grants permission by accepting a prompt to install a [Site Permission Add-On](https://support.mozilla.org/en-US/kb/site-permission-addons).
   For more information see {{bug(1795025)}}.
 
 #### Removals
@@ -60,7 +64,9 @@ This article provides information about the changes in Firefox 108 that will aff
 
 ### WebDriver conformance (WebDriver BiDi, Marionette)
 
-#### Removals
+#### WebDriver BiDi
+
+#### Marionette
 
 ## Changes for add-on developers
 
